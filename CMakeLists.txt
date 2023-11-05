@@ -6,15 +6,20 @@ project(std_module_example CXX)
 set(CMAKE_CXX_EXTENSIONS OFF)
 # Set the version of C++ for the project
 set(CMAKE_CXX_STANDARD 20)
-# Create a library
-add_library(foo)
-# Add the module file to the library
-target_sources(foo
-  PUBLIC
-    FILE_SET CXX_MODULES FILES
-      foo.cxx
-)
+
+# cmake modules
+include(cmake/list_dirs.cmake)
+include(cmake/upd_tar_list.cmake)
+include(cmake/CPM.cmake)
+include(cmake/comp_flags.cmake)
+
+# add dir with libraries
+add_subdirectory(src)
 # Create an executable
 add_executable(hello main.cxx)
 # Link to the library foo
-target_link_libraries(hello foo)
+target_link_libraries(hello ${LIBLIST})
+
+# gtests
+enable_testing()
+add_subdirectory(tests)
