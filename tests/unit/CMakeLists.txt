@@ -33,7 +33,7 @@ foreach(TEST ${TESTLIST})
   target_link_libraries(${TEST} PRIVATE GTest::gtest GTest::gtest_main pthread)
   target_link_libraries(${TEST} PRIVATE ${LIBLIST})
 
-  target_compile_features(${TEST} PRIVATE cxx_std_20)
+  target_compile_features(${TEST} PRIVATE cxx_std_23)
   target_include_directories(${TEST} PRIVATE ${CMAKE_SOURCE_DIR}/src)
   target_include_directories(${TEST} PRIVATE ${CMAKE_SOURCE_DIR}/tests/assets)
 

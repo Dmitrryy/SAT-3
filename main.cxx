@@ -4,10 +4,9 @@ import BfRtSAT;
 #include <tuple>
 
 int main(){
-  std::vector<std::tuple<int, int, int>> clauses = {{1, 2, -3}, {2, 3, -1}};
-  std::vector<int> vars;
+  std::array<std::tuple<int, int, int>, 2> clauses = {{{1, 2, -3}, {2, 3, -1}}};
 
-  solve(clauses, vars);
+  solve<3>(clauses);
 
   return 0;
 }
